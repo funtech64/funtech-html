@@ -243,6 +243,38 @@
             background-clip: text;
             font-weight: 700;
         }
+
+        /* Philosophy section styling */
+        .philosophy {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .philosophy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .philosophy-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 10px;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .philosophy-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
         
         @media (max-width: 768px) {
             .main-content {
@@ -300,37 +332,75 @@
         
         <div class="main-content">
             <div class="left-column">
+
+                <!-- Engineering Philosophy (NEW, at the very top) -->
+                <section class="section philosophy">
+                  <h3 class="section-title">Engineering Philosophy</h3>
+                  <ul class="philosophy-list">
+                    <li><strong>No API dependency:</strong> I don’t use ChatGPT APIs. Every model is prompt‑engineered by hand and cross‑reviewed by a separate AI for accuracy and immersive learning.</li>
+                    <li><strong>Human–AI co‑development:</strong> AI assists; human judgment leads.</li>
+                    <li><strong>Long‑term craftsmanship:</strong> I build for resilience over rush. Months—or years—if that’s what quality requires.</li>
+                    <li><strong>Four hats, one engineer:</strong> automation, prompt engineering, QA, and data curation—documented end‑to‑end.</li>
+                    <li><strong>Integrity &amp; security first:</strong> no shortcuts; system integrity and data protection drive decisions.</li>
+                    <li><strong>Always learning:</strong> continual growth—from CUDA drivers to data pipelines.</li>
+                    <li><strong>Structured infrastructure:</strong> I “prompt‑engineer” architecture for clarity, maintainability, and repeatability.</li>
+                    <li><strong>Detailed notes:</strong> if it wasn’t documented, it wasn’t engineered.</li>
+                  </ul>
+                </section>
+
+                <!-- Resume (NEW, above Professional Summary) -->
+                <section class="section" id="resume">
+                  <h3 class="section-title">Resume</h3>
+                  <p class="description" style="margin-bottom:14px;">
+                    Full CV with project details, certifications, and references.
+                  </p>
+                  <div class="resume-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <a href="/assets/Jonathan_Jolly_Resume.pdf" class="btn-primary" style="
+                      display:inline-block;padding:10px 14px;border-radius:10px;
+                      background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;
+                      text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+                    ">Download PDF</a>
+                    <a href="https://www.linkedin.com/in/jonathanjolly1" class="btn-secondary" style="
+                      display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #e2e8f0;
+                      color:#4a5568;text-decoration:none;font-weight:600;background:#fff;
+                    ">View on LinkedIn</a>
+                  </div>
+                </section>
+
                 <section class="section">
                     <h3 class="section-title">Professional Summary</h3>
                     <p class="description">
-                        **AI/ML Engineer** with 10+ years of infrastructure experience, specializing in self-hosted LLM deployment and GPU-accelerated training environments. Currently completing intensive 26-week AI/ML program at Fullstack Academy. Built **LogicRocket** - a fine-tuned Mistral 7B model for logical fallacy detection using LoRA, deployed on custom CUDA-enabled Linux infrastructure. Experienced in federal environments with Public Trust clearance, healthcare systems, and enterprise retail operations.
+                        <strong>AI/ML Engineer</strong> with 10+ years of infrastructure experience, specializing in self-hosted LLM deployment and GPU-accelerated training environments. Currently completing intensive 26-week AI/ML program at Fullstack Academy. Built <strong>LogicRocket</strong> — a fine-tuned Mistral 7B model for logical fallacy detection using LoRA, deployed on custom CUDA-enabled Linux infrastructure. Experienced in federal environments with Public Trust clearance, healthcare systems, and enterprise retail operations.
                     </p>
                 </section>
                 
                 <section class="section">
                     <h3 class="section-title">Experience</h3>
                     
+                    <!-- CLEAN HTML version of Student entry -->
                     <div class="experience-item">
-                        <div class="job-title">AI/ML Engineering Student</div>
-                        <div class="company">Fullstack Academy</div>
-                        <div class="date">November 2024 - May 2025</div>
-                        <div class="description">
-                            Completed intensive 26-week program with 50+ modules covering comprehensive AI/ML curriculum:
-                            <br>• **Statistics & Data Science**: Sampling, distributions, regression, correlation, hypothesis testing
-                            <br>• **Python Programming**: OOP, NumPy, pandas, matplotlib, seaborn, modular scripting, Git
-                            <br>• **Machine Learning**: Supervised/unsupervised models, scikit-learn, time series, recommender systems
-                            <br>• **Deep Learning**: CNNs, RNNs, PyTorch, TensorFlow, model optimization, transfer learning
-                            <br>• **Data Visualization**: Advanced plotting, statistical analysis, exploratory data analysis
-                            <br>• **Generative AI & LLMs**: ChatGPT, BERT, prompt engineering, transformer fine-tuning, explainable AI
-                            <br>• **Capstone Project - LogicRocket**: Fine-tuned Mistral 7B using LoRA/QLoRA on theological dataset with 98 logical fallacy examples
-                            <br>• **Custom Infrastructure Build**: Replaced Proxmox with self-built Ubuntu 22.04 hypervisor system for GPU acceleration
-                            <br>• **Hardware Recovery**: Overcame Tesla T4 GPU hardware failure mid-project, rebuilt entire CUDA environment from scratch
-                            <br>• **MLOps Pipeline**: Architected complete stack - Ubuntu 22.04 → CUDA 12.9 → NVIDIA driver signing → Axolotl → Ollama → FastAPI
-                            <br>• **Virtualization Management**: Implemented libvirt/QEMU with GPU passthrough for isolated AI training environments
-                            <br>• **Documentation System**: Built self-hosted DocuWiki for tracking configurations, rollbacks, and deployment architecture
-                        </div>
+                      <div class="job-title">AI/ML Engineering Student</div>
+                      <div class="company">Fullstack Academy</div>
+                      <div class="date">November 2024 – May 2025</div>
+                      <div class="description">
+                        <p>Completed an intensive 26‑week program with 50+ modules covering a comprehensive AI/ML curriculum:</p>
+                        <ul style="margin-top:8px;padding-left:18px;">
+                          <li><strong>Statistics &amp; Data Science:</strong> Sampling, distributions, regression, correlation, hypothesis testing</li>
+                          <li><strong>Python Programming:</strong> OOP, NumPy, pandas, matplotlib, seaborn, modular scripting, Git</li>
+                          <li><strong>Machine Learning:</strong> Supervised/unsupervised models, scikit‑learn, time series, recommender systems</li>
+                          <li><strong>Deep Learning:</strong> CNNs, RNNs, PyTorch, TensorFlow, model optimization, transfer learning</li>
+                          <li><strong>Data Visualization:</strong> Advanced plotting, statistical analysis, exploratory data analysis</li>
+                          <li><strong>Generative AI &amp; LLMs:</strong> BERT, prompt engineering, transformer fine‑tuning, explainable AI</li>
+                          <li><strong>Capstone — LogicRocket:</strong> Fine‑tuned Mistral 7B using LoRA/QLoRA on a logical‑fallacy dataset (98 examples)</li>
+                          <li><strong>Custom Infrastructure Build:</strong> Replaced Proxmox with a self‑built Ubuntu 22.04 hypervisor for GPU acceleration</li>
+                          <li><strong>Hardware Recovery:</strong> Overcame Tesla T4 failure; rebuilt CUDA environment from scratch</li>
+                          <li><strong>MLOps Pipeline:</strong> Ubuntu 22.04 → CUDA 12.9 → NVIDIA driver signing → Axolotl → Ollama → FastAPI</li>
+                          <li><strong>Virtualization Management:</strong> libvirt/QEMU with GPU passthrough for isolated AI training</li>
+                          <li><strong>Documentation:</strong> Self‑hosted DocuWiki for configs, rollbacks, and deployment architecture</li>
+                        </ul>
+                      </div>
                     </div>
-                    
+
                     <div class="experience-item">
                         <div class="job-title">Helpdesk Contractor</div>
                         <div class="company">Habitat for Humanity of Metro Denver</div>
@@ -363,7 +433,7 @@
                         <div class="company">Western Area Power Administration (DOE)</div>
                         <div class="date">November 2020 - June 2021</div>
                         <div class="description">
-                            Tier I/II analyst in federal Department of Energy environment with **Public Trust clearance**. Supported Dell hardware, issued cell phones, handled escalations and employee/contractor onboarding. Streamlined escalation matrix for desktop support team and created ServiceNow documentation for new hire procedures.
+                            Tier I/II analyst in federal Department of Energy environment with <strong>Public Trust clearance</strong>. Supported Dell hardware, issued cell phones, handled escalations and employee/contractor onboarding. Streamlined escalation matrix for desktop support team and created ServiceNow documentation for new hire procedures.
                         </div>
                     </div>
                 </section>
