@@ -1,567 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonathan Jolly - MLOps Resume</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .resume-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 150px;
-            height: 150px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .title {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .contact-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 0;
-        }
-        
-        .left-column {
-            padding: 40px;
-        }
-        
-        .right-column {
-            background: #f8fafc;
-            padding: 40px 30px;
-            border-left: 1px solid #e2e8f0;
-        }
-        
-        .section {
-            margin-bottom: 35px;
-        }
-        
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 8px;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-        
-        .experience-item {
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            background: #667eea;
-            border-radius: 50%;
-        }
-        
-        .job-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #2d3748;
-            margin-bottom: 5px;
-        }
-        
-        .company {
-            color: #667eea;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        
-        .date {
-            color: #718096;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .description {
-            color: #4a5568;
-            font-size: 0.95rem;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-        }
-        
-        .skill-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            text-align: center;
-            font-weight: 500;
-            transition: transform 0.2s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-        }
-        
-        .progress-bar {
-            background: #e2e8f0;
-            height: 6px;
-            border-radius: 3px;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 3px;
-            transition: width 2s ease;
-        }
-        
-        .education-item {
-            margin-bottom: 20px;
-        }
-        
-        .degree {
-            font-weight: 600;
-            color: #2d3748;
-        }
-        
-        .school {
-            color: #667eea;
-            font-weight: 500;
-        }
-        
-        .ml-accent {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jonathan Jolly - MLOps Resume</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height:1.6; color:#2d3748;
+      background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      min-height:100vh; padding:20px;
+    }
+    .resume-container{
+      max-width:900px; margin:0 auto; background:#fff; border-radius:20px;
+      box-shadow:0 25px 50px rgba(0,0,0,.15); overflow:hidden; position:relative;
+    }
+    .header{
+      background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      color:#fff; padding:40px; position:relative; overflow:hidden;
+    }
+    .header::before{
+      content:''; position:absolute; top:-50%; right:-10%; width:200px; height:200px;
+      background:rgba(255,255,255,.1); border-radius:50%; animation:float 6s ease-in-out infinite;
+    }
+    .header::after{
+      content:''; position:absolute; bottom:-30%; left:-5%; width:150px; height:150px;
+      background:rgba(255,255,255,.06); border-radius:50%; animation:float 8s ease-in-out infinite reverse;
+    }
+    @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    .name{ font-size:2.5rem; font-weight:700; margin-bottom:10px; position:relative; z-index:2; }
+    .title{ font-size:1.3rem; opacity:.95; margin-bottom:20px; position:relative; z-index:2; }
+    .ml-accent{
+      display:inline-block; background:linear-gradient(45deg,#ff6b6b,#4ecdc4);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700;
+    }
+    .contact-info{ display:flex; flex-wrap:wrap; gap:20px; position:relative; z-index:2; }
+    .contact-item{ display:flex; align-items:center; gap:8px; font-size:.95rem; }
+    .contact-icon{ width:16px; height:16px; fill:currentColor; }
 
-        /* Philosophy section styling */
-        .philosophy {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-        }
+    /* Single-column content */
+    .content{ padding:40px; }
 
-        .philosophy-list {
-            list-style: none;
-            padding-left: 0;
-        }
+    .section{ margin-bottom:35px; }
+    .section-title{
+      font-size:1.4rem; font-weight:600; color:#4a5568; margin-bottom:20px; position:relative; padding-bottom:8px;
+    }
+    .section-title::after{
+      content:''; position:absolute; bottom:0; left:0; width:60px; height:3px;
+      background:linear-gradient(90deg,#667eea,#764ba2); border-radius:2px;
+    }
+    .description{ color:#4a5568; font-size:.95rem; }
 
-        .philosophy-list li {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 10px;
-            color: #4a5568;
-            font-size: 0.95rem;
-        }
+    /* Full-width philosophy panel */
+    .philosophy{
+      background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:22px 20px;
+    }
+    .philosophy-list{ list-style:none; padding-left:0; }
+    .philosophy-list li{
+      position:relative; padding-left:18px; margin-bottom:10px; color:#4a5568; font-size:.95rem;
+    }
+    .philosophy-list li::before{
+      content:''; position:absolute; left:0; top:10px; width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(90deg,#667eea,#764ba2);
+    }
 
-        .philosophy-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .right-column {
-                border-left: none;
-                border-top: 1px solid #e2e8f0;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .name {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    /* Experience timeline bullets */
+    .experience-item{ margin-bottom:25px; position:relative; padding-left:20px; }
+    .experience-item::before{
+      content:''; position:absolute; left:0; top:8px; width:8px; height:8px; background:#667eea; border-radius:50%;
+    }
+    .job-title{ font-weight:600; font-size:1.1rem; color:#2d3748; margin-bottom:5px; }
+    .company{ color:#667eea; font-weight:500; margin-bottom:5px; }
+    .date{ color:#718096; font-size:.9rem; margin-bottom:10px; }
+
+    /* Skills as clean résumé pills */
+    .skills-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+      gap:10px; margin-top:10px;
+    }
+    .skill-pill{
+      background:#fff; border:1px solid #e2e8f0; color:#2d3748;
+      padding:8px 12px; border-radius:999px; font-size:.85rem; text-align:center; font-weight:500;
+    }
+
+    /* Progress bars */
+    .progress-row{ margin-bottom:14px; }
+    .progress-label{
+      display:flex; justify-content:space-between; margin-bottom:6px; font-size:.95rem; color:#2d3748;
+    }
+    .progress-bar{
+      background:#e2e8f0; height:6px; border-radius:3px; overflow:hidden;
+    }
+    .progress-fill{
+      height:100%; background:linear-gradient(90deg,#667eea,#764ba2); border-radius:3px; transition:width 1.6s ease;
+    }
+
+    .education-item{ margin-bottom:18px; }
+    .degree{ font-weight:600; color:#2d3748; }
+    .school{ color:#667eea; font-weight:500; }
+
+    /* Buttons */
+    .btn-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-primary{
+      display:inline-block; padding:10px 14px; border-radius:10px;
+      background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; text-decoration:none;
+      font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,.12);
+    }
+    .btn-secondary{
+      display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid #e2e8f0;
+      background:#fff; color:#4a5568; text-decoration:none; font-weight:600;
+    }
+
+    @media (max-width:768px){
+      .content{ padding:28px; }
+      .name{ font-size:2rem; }
+      .contact-info{ flex-direction:column; gap:10px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="resume-container">
-        <header class="header">
-            <h1 class="name">Jonathan Jolly</h1>
-            <h2 class="title"><span class="ml-accent">AI/ML</span> Engineer & Infrastructure Specialist</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                    jonathanjolly@hushmail.com
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    Littleton, CO
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                    </svg>
-                    linkedin.com/in/jonathanjolly1
-                </div>
-                <div class="contact-item">
-                    <svg class="contact-icon" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    github.com/funtech64 | huggingface.co/funtech64
-                </div>
-            </div>
-        </header>
-        
-        <div class="main-content">
-            <div class="left-column">
-
-                <!-- Engineering Philosophy (NEW, at the very top) -->
-                <section class="section philosophy">
-                  <h3 class="section-title">Engineering Philosophy</h3>
-                  <ul class="philosophy-list">
-                    <li><strong>No API dependency:</strong> I don’t use ChatGPT APIs. Every model is prompt‑engineered by hand and cross‑reviewed by a separate AI for accuracy and immersive learning.</li>
-                    <li><strong>Human–AI co‑development:</strong> AI assists; human judgment leads.</li>
-                    <li><strong>Long‑term craftsmanship:</strong> I build for resilience over rush. Months—or years—if that’s what quality requires.</li>
-                    <li><strong>Four hats, one engineer:</strong> automation, prompt engineering, QA, and data curation—documented end‑to‑end.</li>
-                    <li><strong>Integrity &amp; security first:</strong> no shortcuts; system integrity and data protection drive decisions.</li>
-                    <li><strong>Always learning:</strong> continual growth—from CUDA drivers to data pipelines.</li>
-                    <li><strong>Structured infrastructure:</strong> I “prompt‑engineer” architecture for clarity, maintainability, and repeatability.</li>
-                    <li><strong>Detailed notes:</strong> if it wasn’t documented, it wasn’t engineered.</li>
-                  </ul>
-                </section>
-
-                <!-- Resume (NEW, above Professional Summary) -->
-                <section class="section" id="resume">
-                  <h3 class="section-title">Resume</h3>
-                  <p class="description" style="margin-bottom:14px;">
-                    Full CV with project details, certifications, and references.
-                  </p>
-                  <div class="resume-actions" style="display:flex;gap:12px;flex-wrap:wrap;">
-                    <a href="/assets/Jonathan_Jolly_Resume.pdf" class="btn-primary" style="
-                      display:inline-block;padding:10px 14px;border-radius:10px;
-                      background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;
-                      text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.12);
-                    ">Download PDF</a>
-                    <a href="https://www.linkedin.com/in/jonathanjolly1" class="btn-secondary" style="
-                      display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #e2e8f0;
-                      color:#4a5568;text-decoration:none;font-weight:600;background:#fff;
-                    ">View on LinkedIn</a>
-                  </div>
-                </section>
-
-                <section class="section">
-                    <h3 class="section-title">Professional Summary</h3>
-                    <p class="description">
-                        <strong>AI/ML Engineer</strong> with 10+ years of infrastructure experience, specializing in self-hosted LLM deployment and GPU-accelerated training environments. Currently completing intensive 26-week AI/ML program at Fullstack Academy. Built <strong>LogicRocket</strong> — a fine-tuned Mistral 7B model for logical fallacy detection using LoRA, deployed on custom CUDA-enabled Linux infrastructure. Experienced in federal environments with Public Trust clearance, healthcare systems, and enterprise retail operations.
-                    </p>
-                </section>
-                
-                <section class="section">
-                    <h3 class="section-title">Experience</h3>
-                    
-                    <!-- CLEAN HTML version of Student entry -->
-                    <div class="experience-item">
-                      <div class="job-title">AI/ML Engineering Student</div>
-                      <div class="company">Fullstack Academy</div>
-                      <div class="date">November 2024 – May 2025</div>
-                      <div class="description">
-                        <p>Completed an intensive 26‑week program with 50+ modules covering a comprehensive AI/ML curriculum:</p>
-                        <ul style="margin-top:8px;padding-left:18px;">
-                          <li><strong>Statistics &amp; Data Science:</strong> Sampling, distributions, regression, correlation, hypothesis testing</li>
-                          <li><strong>Python Programming:</strong> OOP, NumPy, pandas, matplotlib, seaborn, modular scripting, Git</li>
-                          <li><strong>Machine Learning:</strong> Supervised/unsupervised models, scikit‑learn, time series, recommender systems</li>
-                          <li><strong>Deep Learning:</strong> CNNs, RNNs, PyTorch, TensorFlow, model optimization, transfer learning</li>
-                          <li><strong>Data Visualization:</strong> Advanced plotting, statistical analysis, exploratory data analysis</li>
-                          <li><strong>Generative AI &amp; LLMs:</strong> BERT, prompt engineering, transformer fine‑tuning, explainable AI</li>
-                          <li><strong>Capstone — LogicRocket:</strong> Fine‑tuned Mistral 7B using LoRA/QLoRA on a logical‑fallacy dataset (98 examples)</li>
-                          <li><strong>Custom Infrastructure Build:</strong> Replaced Proxmox with a self‑built Ubuntu 22.04 hypervisor for GPU acceleration</li>
-                          <li><strong>Hardware Recovery:</strong> Overcame Tesla T4 failure; rebuilt CUDA environment from scratch</li>
-                          <li><strong>MLOps Pipeline:</strong> Ubuntu 22.04 → CUDA 12.9 → NVIDIA driver signing → Axolotl → Ollama → FastAPI</li>
-                          <li><strong>Virtualization Management:</strong> libvirt/QEMU with GPU passthrough for isolated AI training</li>
-                          <li><strong>Documentation:</strong> Self‑hosted DocuWiki for configs, rollbacks, and deployment architecture</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="experience-item">
-                        <div class="job-title">Helpdesk Contractor</div>
-                        <div class="company">Habitat for Humanity of Metro Denver</div>
-                        <div class="date">January 2023 - March 2023</div>
-                        <div class="description">
-                            Resolved helpdesk tickets across two ticketing systems. Administered Microsoft Exchange and SharePoint systems. Managed Endpoint/InTune administration for PC fleet and provided troubleshooting support for common network outages.
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="job-title">IT Support Specialist</div>
-                        <div class="company">Contexture</div>
-                        <div class="date">March 2022 - December 2022</div>
-                        <div class="description">
-                            Provided Tier II support and managed asset lifecycle for 500+ devices. Coordinated secure destruction of hundreds of laptops following data security protocols. Led office relocations, managed vendor relationships, and implemented barcode-based asset tracking system. Participated in Jira meetings for process improvement and change management.
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="job-title">Technical Support Analyst</div>
-                        <div class="company">Robert Half (ShaneCo)</div>
-                        <div class="date">October 2021 - March 2022</div>
-                        <div class="description">
-                            Supported enterprise SAP environments and deployed Zoom conferencing systems across retail locations. Managed Kandji SaaS MDM for Apple devices and troubleshot VMware, Cisco Meraki, and SolarWinds Orion infrastructure. Deployed enterprise software for iPads in bulk and provided executive-level technical support.
-                        </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="job-title">Technical Support Specialist</div>
-                        <div class="company">Western Area Power Administration (DOE)</div>
-                        <div class="date">November 2020 - June 2021</div>
-                        <div class="description">
-                            Tier I/II analyst in federal Department of Energy environment with <strong>Public Trust clearance</strong>. Supported Dell hardware, issued cell phones, handled escalations and employee/contractor onboarding. Streamlined escalation matrix for desktop support team and created ServiceNow documentation for new hire procedures.
-                        </div>
-                    </div>
-                </section>
-            </div>
-            
-            <div class="right-column">
-                <section class="section">
-                    <h3 class="section-title">Core Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">Ubuntu</div>
-                        <div class="skill-tag">FreeBSD</div>
-                        <div class="skill-tag">Debian</div>
-                        <div class="skill-tag">OpenSUSE</div>
-                        <div class="skill-tag">Raspberry Pi</div>
-                        <div class="skill-tag">CUDA/NVIDIA</div>
-                        <div class="skill-tag">Axolotl</div>
-                        <div class="skill-tag">LoRA/QLoRA</div>
-                        <div class="skill-tag">Ollama</div>
-                        <div class="skill-tag">FastAPI</div>
-                        <div class="skill-tag">Docker</div>
-                        <div class="skill-tag">libvirt/QEMU</div>
-                        <div class="skill-tag">Hugging Face</div>
-                        <div class="skill-tag">PyTorch</div>
-                        <div class="skill-tag">scikit-learn</div>
-                        <div class="skill-tag">NumPy/pandas</div>
-                        <div class="skill-tag">matplotlib</div>
-                        <div class="skill-tag">Mistral/LLMs</div>
-                        <div class="skill-tag">GPU Passthrough</div>
-                        <div class="skill-tag">DocuWiki</div>
-                        <div class="skill-tag">Bash/Shell</div>
-                        <div class="skill-tag">PowerShell</div>
-                        <div class="skill-tag">Git</div>
-                    </div>
-                </section>
-                
-                <section class="section">
-                    <h3 class="section-title">Proficiency</h3>
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>LLM Fine-tuning & Deployment</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Expert</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Linux/Unix Systems Administration</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Expert</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 98%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Python Data Science Stack</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Advanced</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 88%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>GPU Infrastructure & CUDA</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Advanced</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Virtualization & Containerization</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Expert</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 92%;"></div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Enterprise Infrastructure Support</span>
-                            <span style="font-size: 0.85rem; color: #718096;">Expert</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                </section>
-                
-                <section class="section">
-                    <h3 class="section-title">Education</h3>
-                    <div class="education-item">
-                        <div class="degree">AI/ML Certificate</div>
-                        <div class="school">Fullstack Academy</div>
-                        <div class="date" style="margin-top: 5px;">2025</div>
-                    </div>
-                    
-                    <div class="education-item">
-                        <div class="degree">B.B.A. Management & Marketing</div>
-                        <div class="school">Abilene Christian University</div>
-                        <div class="date" style="margin-top: 5px;">2002</div>
-                    </div>
-                </section>
-                
-                <section class="section">
-                    <h3 class="section-title">Certifications</h3>
-                    <div style="font-size: 0.9rem; color: #4a5568;">
-                        <div style="margin-bottom: 8px;">• CompTIA A+, N+, Server+</div>
-                        <div style="margin-bottom: 8px;">• AWS Cloud Practitioner (CLF-C01)</div>
-                        <div style="margin-bottom: 8px;">• Azure Fundamentals (AZ-900)</div>
-                        <div style="margin-bottom: 8px;">• Microsoft MTA: Windows Server Administration</div>
-                        <div style="margin-bottom: 8px;">• Learning PowerShell</div>
-                        <div style="margin-bottom: 8px;">• VMware vSphere (in progress)</div>
-                        <div style="margin-bottom: 8px;">• Eagle Scout Achievement</div>
-                    </div>
-                </section>
-            </div>
+  <div class="resume-container">
+    <header class="header">
+      <h1 class="name">Jonathan Jolly</h1>
+      <h2 class="title"><span class="ml-accent">AI/ML</span> Engineer & Infrastructure Specialist</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          jonathanjolly@hushmail.com
         </div>
-    </div>
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Littleton, CO
+        </div>
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          linkedin.com/in/jonathanjolly1
+        </div>
+        <div class="contact-item">
+          <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          github.com/funtech64 | huggingface.co/funtech64
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Full-width Engineering Philosophy -->
+      <section class="section philosophy">
+        <h3 class="section-title">Engineering Philosophy</h3>
+        <ul class="philosophy-list">
+          <li><strong>No API dependency:</strong> I don’t use ChatGPT APIs. Every model is prompt‑engineered by hand and cross‑reviewed by a separate AI for accuracy and immersive learning.</li>
+          <li><strong>Human–AI co‑development:</strong> AI assists; human judgment leads.</li>
+          <li><strong>Long‑term craftsmanship:</strong> I build for resilience over rush. Months—or years—if that’s what quality requires.</li>
+          <li><strong>Four hats, one engineer:</strong> automation, prompt engineering, QA, and data curation—documented end‑to‑end.</li>
+          <li><strong>Integrity &amp; security first:</strong> no shortcuts; system integrity and data protection drive decisions.</li>
+          <li><strong>Always learning:</strong> continual growth—from CUDA drivers to data pipelines.</li>
+          <li><strong>Structured infrastructure:</strong> I “prompt‑engineer” architecture for clarity, maintainability, and repeatability.</li>
+          <li><strong>Detailed notes:</strong> if it wasn’t documented, it wasn’t engineered.</li>
+        </ul>
+      </section>
+
+      <!-- Resume links -->
+      <section class="section" id="resume">
+        <h3 class="section-title">Resume</h3>
+        <p class="description" style="margin-bottom:14px;">Full CV with project details, certifications, and references.</p>
+        <div class="btn-row">
+          <a class="btn-primary" href="/assets/Jonathan_Jolly_Resume.pdf">Download PDF</a>
+          <a class="btn-secondary" href="https://www.linkedin.com/in/jonathanjolly1">View on LinkedIn</a>
+        </div>
+      </section>
+
+      <!-- Summary -->
+      <section class="section">
+        <h3 class="section-title">Professional Summary</h3>
+        <p class="description">
+          <strong>AI/ML Engineer</strong> with 10+ years of infrastructure experience, specializing in self‑hosted LLM deployment and GPU‑accelerated training environments. Currently completing intensive 26‑week AI/ML program at Fullstack Academy. Built <strong>LogicRocket</strong> — a fine‑tuned Mistral 7B model for logical fallacy detection using LoRA, deployed on custom CUDA‑enabled Linux infrastructure. Experienced in federal environments with Public Trust clearance, healthcare systems, and enterprise retail operations.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="section">
+        <h3 class="section-title">Experience</h3>
+
+        <div class="experience-item">
+          <div class="job-title">AI/ML Engineering Student</div>
+          <div class="company">Fullstack Academy</div>
+          <div class="date">November 2024 – May 2025</div>
+          <div class="description">
+            <p>Completed an intensive 26‑week program with 50+ modules covering a comprehensive AI/ML curriculum:</p>
+            <ul style="margin-top:8px; padding-left:18px;">
+              <li><strong>Statistics &amp; Data Science:</strong> sampling, distributions, regression, correlation, hypothesis testing</li>
+              <li><strong>Python Programming:</strong> OOP, NumPy, pandas, matplotlib, seaborn, modular scripting, Git</li>
+              <li><strong>Machine Learning:</strong> supervised/unsupervised models, scikit‑learn, time series, recommender systems</li>
+              <li><strong>Deep Learning:</strong> CNNs, RNNs, PyTorch, TensorFlow, model optimization, transfer learning</li>
+              <li><strong>Data Visualization:</strong> advanced plotting, statistical analysis, exploratory data analysis</li>
+              <li><strong>Generative AI &amp; LLMs:</strong> BERT, prompt engineering, transformer fine‑tuning, explainable AI</li>
+              <li><strong>Capstone — LogicRocket:</strong> fine‑tuned Mistral 7B using LoRA/QLoRA on a logical‑fallacy dataset (98 examples)</li>
+              <li><strong>Custom Infrastructure Build:</strong> replaced Proxmox with a self‑built Ubuntu 22.04 hypervisor for GPU acceleration</li>
+              <li><strong>Hardware Recovery:</strong> overcame Tesla T4 failure; rebuilt CUDA environment from scratch</li>
+              <li><strong>MLOps Pipeline:</strong> Ubuntu 22.04 → CUDA 12.9 → NVIDIA driver signing → Axolotl → Ollama → FastAPI</li>
+              <li><strong>Virtualization Management:</strong> libvirt/QEMU with GPU passthrough for isolated AI training</li>
+              <li><strong>Documentation:</strong> self‑hosted DocuWiki for configs, rollbacks, and deployment architecture</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Helpdesk Contractor</div>
+          <div class="company">Habitat for Humanity of Metro Denver</div>
+          <div class="date">January 2023 – March 2023</div>
+          <div class="description">
+            Resolved helpdesk tickets across two ticketing systems. Administered Microsoft Exchange and SharePoint systems. Managed Endpoint/InTune administration for PC fleet and provided troubleshooting support for common network outages.
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">IT Support Specialist</div>
+          <div class="company">Contexture</div>
+          <div class="date">March 2022 – December 2022</div>
+          <div class="description">
+            Provided Tier II support and managed asset lifecycle for 500+ devices. Coordinated secure destruction of hundreds of laptops following data security protocols. Led office relocations, managed vendor relationships, and implemented barcode‑based asset tracking system. Participated in Jira meetings for process improvement and change management.
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Technical Support Analyst</div>
+          <div class="company">Robert Half (ShaneCo)</div>
+          <div class="date">October 2021 – March 2022</div>
+          <div class="description">
+            Supported enterprise SAP environments and deployed Zoom conferencing systems across retail locations. Managed Kandji SaaS MDM for Apple devices and troubleshot VMware, Cisco Meraki, and SolarWinds Orion infrastructure. Deployed enterprise software for iPads in bulk and provided executive‑level technical support.
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Technical Support Specialist</div>
+          <div class="company">Western Area Power Administration (DOE)</div>
+          <div class="date">November 2020 – June 2021</div>
+          <div class="description">
+            Tier I/II analyst in federal Department of Energy environment with <strong>Public Trust clearance</strong>. Supported Dell hardware, issued cell phones, handled escalations and employee/contractor onboarding. Streamlined escalation matrix for desktop support team and created ServiceNow documentation for new hire procedures.
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Skills (clean pills) -->
+      <section class="section">
+        <h3 class="section-title">Core Skills</h3>
+        <div class="skills-grid">
+          <div class="skill-pill">Python</div>
+          <div class="skill-pill">Ubuntu</div>
+          <div class="skill-pill">FreeBSD</div>
+          <div class="skill-pill">Debian</div>
+          <div class="skill-pill">OpenSUSE</div>
+          <div class="skill-pill">Raspberry Pi</div>
+          <div class="skill-pill">CUDA/NVIDIA</div>
+          <div class="skill-pill">Axolotl</div>
+          <div class="skill-pill">LoRA/QLoRA</div>
+          <div class="skill-pill">Ollama</div>
+          <div class="skill-pill">FastAPI</div>
+          <div class="skill-pill">Docker</div>
+          <div class="skill-pill">libvirt/QEMU</div>
+          <div class="skill-pill">Hugging Face</div>
+          <div class="skill-pill">PyTorch</div>
+          <div class="skill-pill">scikit‑learn</div>
+          <div class="skill-pill">NumPy/pandas</div>
+          <div class="skill-pill">matplotlib</div>
+          <div class="skill-pill">Mistral/LLMs</div>
+          <div class="skill-pill">GPU Passthrough</div>
+          <div class="skill-pill">DocuWiki</div>
+          <div class="skill-pill">Bash/Shell</div>
+          <div class="skill-pill">PowerShell</div>
+          <div class="skill-pill">Git</div>
+        </div>
+      </section>
+
+      <!-- Proficiency -->
+      <section class="section">
+        <h3 class="section-title">Proficiency</h3>
+        <div class="progress-row">
+          <div class="progress-label"><span>LLM Fine‑tuning & Deployment</span><span style="font-size:.85rem;color:#718096;">Expert</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:95%;"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Linux/Unix Systems Administration</span><span style="font-size:.85rem;color:#718096;">Expert</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:98%;"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Python Data Science Stack</span><span style="font-size:.85rem;color:#718096;">Advanced</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:88%;"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>GPU Infrastructure & CUDA</span><span style="font-size:.85rem;color:#718096;">Advanced</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:90%;"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Virtualization & Containerization</span><span style="font-size:.85rem;color:#718096;">Expert</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:92%;"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label"><span>Enterprise Infrastructure Support</span><span style="font-size:.85rem;color:#718096;">Expert</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:95%;"></div></div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="section">
+        <h3 class="section-title">Education</h3>
+        <div class="education-item">
+          <div class="degree">AI/ML Certificate</div>
+          <div class="school">Fullstack Academy</div>
+          <div class="date" style="margin-top:5px;">2025</div>
+        </div>
+        <div class="education-item">
+          <div class="degree">B.B.A. Management & Marketing</div>
+          <div class="school">Abilene Christian University</div>
+          <div class="date" style="margin-top:5px;">2002</div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="section">
+        <h3 class="section-title">Certifications</h3>
+        <div class="description" style="font-size:.9rem;">
+          <div style="margin-bottom:8px;">• CompTIA A+, N+, Server+</div>
+          <div style="margin-bottom:8px;">• AWS Cloud Practitioner (CLF‑C01)</div>
+          <div style="margin-bottom:8px;">• Azure Fundamentals (AZ‑900)</div>
+          <div style="margin-bottom:8px;">• Microsoft MTA: Windows Server Administration</div>
+          <div style="margin-bottom:8px;">• Learning PowerShell</div>
+          <div style="margin-bottom:8px;">• VMware vSphere (in progress)</div>
+          <div style="margin-bottom:8px;">• Eagle Scout Achievement</div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
